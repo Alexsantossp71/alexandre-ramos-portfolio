@@ -1,36 +1,32 @@
-# 🌐 Projeto Site — Curso de Git e GitHub
+# 🌐 Alexandre Ramos — Portfolio
 
-> Site de exemplo criado durante o curso de Git e GitHub, com páginas de HTML e Java.
+> Portfolio pessoal com projetos do GitHub, tecnologias e contato.
+
+## 🚀 Acesso
+
+**Site ao vivo:** [alexsantossp71.github.io/projeto-site](https://alexsantossp71.github.io/projeto-site)
 
 ## 📌 Sobre
 
-Site estático criado como exercício do curso de **Git e GitHub**: pratica o fluxo de versionamento (clone, commit, push, branches) enquanto monta um site com páginas de cursos de **HTML** e **Java**.
+Site de portfolio pessoal construído com HTML, CSS e JavaScript puro.
+Busca os repositórios diretamente da API do GitHub, sem necessidade de build ou backend.
 
-## 📄 Páginas
+### Funcionalidades
 
-- `index.html` — página inicial
-- `cursohtml.html` — curso de HTML
-- `cursojava.html` — curso de Java
+- **Hero** com nome, título e estatísticas (repos, linguagens, estrelas)
+- **Seção de Tecnologias** com as principais linguagens e ferramentas
+- **Projetos** — grade com todos os repositórios GitHub, filtráveis por nome/tags
+- **Dark mode** automático (respeita a preferência do sistema)
+- **Responsivo** — funciona em mobile, tablet e desktop
+- **Busca em tempo real** — filtra projetos por nome, descrição ou tags
 
-## 🎨 Recursos
+## 🛠️ Tecnologias
 
-- CSS próprio (`estilos/style.css`)
-- Imagens de logos e botões (`imagens/`)
-- Layout responsivo básico
-
-## 🚀 Como executar localmente
-
-```bash
-git clone https://github.com/Alexsantossp71/projeto-site.git
-cd projeto-site
-# Abra o index.html no navegador, ou:
-python -m http.server 8000
-```
+- HTML5 semântico
+- CSS3 com variáveis e dark mode
+- JavaScript vanilla (fetch API)
+- GitHub REST API (pública, sem autenticação)
 
 ## 👤 Autor
 
 **Alexandre Ramos** — [github.com/Alexsantossp71](https://github.com/Alexsantossp71)
-
-## 📄 Status
-
-Exercício de aprendizado concluído (última atualização: setembro/2021).
