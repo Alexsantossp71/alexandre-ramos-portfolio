@@ -4,7 +4,7 @@
 
 ## 🚀 Acesso
 
-**Site ao vivo:** [alexsantossp71.github.io/projeto-site](https://alexsantossp71.github.io/projeto-site)
+**Site ao vivo:** [alexsantossp71.github.io/alexandre-ramos-portfolio](https://alexsantossp71.github.io/alexandre-ramos-portfolio)
 
 ## 📌 Sobre
 
