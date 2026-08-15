@@ -99,17 +99,17 @@
             stroke: var(--border);
             stroke-width: 1.5;
         }
-        .email-border-comet {
+        .email-border-dot {
             fill: none;
             stroke: var(--accent);
-            stroke-width: 3;
+            stroke-width: 4;
             stroke-linecap: round;
-            stroke-dasharray: 12 88;
+            stroke-dasharray: 0.1 99.9;
             stroke-dashoffset: 0;
-            filter: drop-shadow(0 0 4px var(--accent));
-            animation: border-run-comet 3s linear infinite;
+            filter: drop-shadow(0 0 5px var(--accent));
+            animation: border-run-dot 3s linear infinite;
         }
-        @keyframes border-run-comet {
+        @keyframes border-run-dot {
             from { stroke-dashoffset: 0; }
             to { stroke-dashoffset: -100; }
         }
@@ -169,7 +169,7 @@
         <a href="mailto:alexramos.dev@gmail.com" class="email">
             <svg class="email-border" id="email-border" aria-hidden="true">
                 <rect class="email-border-base" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
-                <rect class="email-border-comet" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-dot" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
             </svg>
             <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             alexramos.dev@gmail.com
