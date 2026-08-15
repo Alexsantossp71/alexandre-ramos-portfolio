@@ -106,15 +106,17 @@
             mask-composite: exclude;
             padding: 1.5px;
             animation: border-run 3s linear infinite;
-            filter: drop-shadow(0 0 6px var(--accent));
+            transform-origin: center;
+            will-change: transform;
             pointer-events: none;
         }
         @keyframes border-run {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-        @media (prefers-reduced-motion: reduce) {
-            .email::before { animation: none; }
+        .email:hover {
+            color: var(--accent);
+            box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 40%, transparent);
         }
 
         .featured {
