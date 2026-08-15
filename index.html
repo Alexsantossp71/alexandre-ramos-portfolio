@@ -87,32 +87,40 @@
             transition: color 0.2s;
         }
         .email:hover { color: var(--accent); }
-        .email svg { width: 16px; height: 16px; }
-        .email::before {
-            content: '';
+        .email-icon { width: 16px; height: 16px; }
+        .email-border {
             position: absolute;
-            inset: -1.5px;
-            border-radius: inherit;
-            background: conic-gradient(
-                from 0deg,
-                var(--accent) 0deg,
-                var(--accent-strong) 12deg,
-                transparent 40deg,
-                transparent 360deg
-            );
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            padding: 1.5px;
-            animation: border-run 3s linear infinite;
-            transform-origin: center;
-            will-change: transform;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
         }
+        .email-border-base {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 1.5;
+        }
+        .email-border-dot {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-dasharray: 1 100;
+            stroke-dashoffset: 0;
+            animation: border-run 3s linear infinite;
+        }
+        .email-border-tail {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.45;
+            stroke-dasharray: 1 100;
+            stroke-dashoffset: 0;
+            animation: border-run 3s linear infinite;
+        }
         @keyframes border-run {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            to { stroke-dashoffset: -100; }
         }
         .email:hover {
             color: var(--accent);
@@ -168,7 +176,12 @@
         <p class="role">Desenvolvedor · Criador de projetos com propósito</p>
 
         <a href="mailto:alexramos.dev@gmail.com" class="email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <svg class="email-border" id="email-border" aria-hidden="true">
+                <rect class="email-border-base" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-tail" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-dot" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             alexramos.dev@gmail.com
         </a>
 
@@ -189,6 +202,27 @@
     </div>
 
     <script>
+        function setupEmailBorder() {
+            var el = document.querySelector('.email');
+            var svg = document.getElementById('email-border');
+            if (!el || !svg) return;
+            var w = el.offsetWidth;
+            var h = el.offsetHeight;
+            var rx = h / 2 - 1.5;
+            svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+            svg.setAttribute('width', w);
+            svg.setAttribute('height', h);
+            svg.style.width = w + 'px';
+            svg.style.height = h + 'px';
+            var rects = svg.querySelectorAll('rect');
+            for (var i = 0; i < rects.length; i++) {
+                rects[i].setAttribute('width', w - 3);
+                rects[i].setAttribute('height', h - 3);
+                rects[i].setAttribute('rx', Math.max(0, rx));
+            }
+        }
+        setupEmailBorder();
+        window.addEventListener('resize', setupEmailBorder);
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
