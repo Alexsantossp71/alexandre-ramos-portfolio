@@ -10,12 +10,6 @@
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        @property --angle {
-            syntax: '<angle>';
-            initial-value: 0deg;
-            inherits: false;
-        }
-
         :root {
             --bg: #0f172a;
             --bg-card: #1e293b;
@@ -86,6 +80,7 @@
             margin-top: 1.25rem;
             padding: 0.55rem 1.1rem;
             border-radius: 999px;
+            border: 1.5px solid var(--border);
             color: var(--text);
             font-size: 0.9rem;
             font-weight: 500;
@@ -93,27 +88,33 @@
         }
         .email:hover { color: var(--accent); }
         .email svg { width: 16px; height: 16px; }
-        .email .email-glow {
+        .email::before {
             content: '';
             position: absolute;
-            inset: 0;
+            inset: -1.5px;
             border-radius: inherit;
-            background: conic-gradient(from var(--angle),
-                transparent 0deg,
-                var(--accent) 30deg,
-                var(--accent-strong) 45deg,
-                transparent 75deg);
-            animation: border-run 3s linear infinite;
-            filter: drop-shadow(0 0 6px var(--accent));
+            background: conic-gradient(
+                from 0deg,
+                var(--accent) 0deg,
+                var(--accent-strong) 12deg,
+                transparent 40deg,
+                transparent 360deg
+            );
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             mask-composite: exclude;
             padding: 1.5px;
+            animation: border-run 3s linear infinite;
+            filter: drop-shadow(0 0 6px var(--accent));
+            pointer-events: none;
         }
-        @keyframes border-run { to { --angle: 360deg; } }
+        @keyframes border-run {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
         @media (prefers-reduced-motion: reduce) {
-            .email .email-glow { animation: none; }
+            .email::before { animation: none; }
         }
 
         .featured {
@@ -165,7 +166,6 @@
         <p class="role">Desenvolvedor · Criador de projetos com propósito</p>
 
         <a href="mailto:alexramos.dev@gmail.com" class="email">
-            <span class="email-glow" aria-hidden="true"></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             alexramos.dev@gmail.com
         </a>
