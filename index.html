@@ -80,7 +80,6 @@
             margin-top: 1.25rem;
             padding: 0.55rem 1.1rem;
             border-radius: 999px;
-            border: 1.5px solid var(--border);
             color: var(--text);
             font-size: 0.9rem;
             font-weight: 500;
@@ -100,27 +99,60 @@
             stroke: var(--border);
             stroke-width: 1.5;
         }
-        .email-border-dot {
+        .email-border-tail3 {
             fill: none;
             stroke: var(--accent);
-            stroke-width: 2.5;
+            stroke-width: 1.5;
             stroke-linecap: round;
-            stroke-dasharray: 1 100;
-            stroke-dashoffset: 0;
-            animation: border-run 3s linear infinite;
+            opacity: 0.15;
+            stroke-dasharray: 40 60;
+            filter: drop-shadow(0 0 4px var(--accent));
+            animation: border-run-tail3 3s linear infinite;
         }
-        .email-border-tail {
+        .email-border-tail2 {
             fill: none;
             stroke: var(--accent);
             stroke-width: 2;
             stroke-linecap: round;
-            opacity: 0.45;
-            stroke-dasharray: 1 100;
-            stroke-dashoffset: 0;
-            animation: border-run 3s linear infinite;
+            opacity: 0.35;
+            stroke-dasharray: 22 78;
+            filter: drop-shadow(0 0 5px var(--accent));
+            animation: border-run-tail2 3s linear infinite;
         }
-        @keyframes border-run {
+        .email-border-tail1 {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            opacity: 0.7;
+            stroke-dasharray: 10 90;
+            filter: drop-shadow(0 0 6px var(--accent));
+            animation: border-run-tail1 3s linear infinite;
+        }
+        .email-border-dot {
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            stroke-dasharray: 1 100;
+            filter: drop-shadow(0 0 8px var(--accent));
+            animation: border-run-dot 3s linear infinite;
+        }
+        @keyframes border-run-dot {
+            from { stroke-dashoffset: 0; }
             to { stroke-dashoffset: -100; }
+        }
+        @keyframes border-run-tail1 {
+            from { stroke-dashoffset: -10; }
+            to { stroke-dashoffset: -110; }
+        }
+        @keyframes border-run-tail2 {
+            from { stroke-dashoffset: -22; }
+            to { stroke-dashoffset: -122; }
+        }
+        @keyframes border-run-tail3 {
+            from { stroke-dashoffset: -40; }
+            to { stroke-dashoffset: -140; }
         }
         .email:hover {
             color: var(--accent);
@@ -178,7 +210,9 @@
         <a href="mailto:alexramos.dev@gmail.com" class="email">
             <svg class="email-border" id="email-border" aria-hidden="true">
                 <rect class="email-border-base" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
-                <rect class="email-border-tail" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-tail3" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-tail2" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
+                <rect class="email-border-tail1" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
                 <rect class="email-border-dot" x="1.5" y="1.5" rx="0" pathLength="100" vector-effect="non-scaling-stroke"/>
             </svg>
             <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
