@@ -9,6 +9,13 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
         :root {
             --bg: #0f172a;
             --bg-card: #1e293b;
@@ -72,20 +79,42 @@
         .role { margin-top: 0.35rem; color: var(--text-muted); font-size: 1rem; }
 
         .email {
+            position: relative;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             margin-top: 1.25rem;
             padding: 0.55rem 1.1rem;
-            border: 1.5px solid var(--border);
             border-radius: 999px;
             color: var(--text);
             font-size: 0.9rem;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: color 0.2s;
         }
-        .email:hover { border-color: var(--accent); color: var(--accent); }
+        .email:hover { color: var(--accent); }
         .email svg { width: 16px; height: 16px; }
+        .email .email-glow {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: conic-gradient(from var(--angle),
+                transparent 0deg,
+                var(--accent) 30deg,
+                var(--accent-strong) 45deg,
+                transparent 75deg);
+            animation: border-run 3s linear infinite;
+            filter: drop-shadow(0 0 6px var(--accent));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            padding: 1.5px;
+        }
+        @keyframes border-run { to { --angle: 360deg; } }
+        @media (prefers-reduced-motion: reduce) {
+            .email .email-glow { animation: none; }
+        }
 
         .featured {
             margin-top: 2.5rem;
@@ -136,6 +165,7 @@
         <p class="role">Desenvolvedor · Criador de projetos com propósito</p>
 
         <a href="mailto:alexramos.dev@gmail.com" class="email">
+            <span class="email-glow" aria-hidden="true"></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             alexramos.dev@gmail.com
         </a>
